@@ -13,12 +13,12 @@ docker compose up
 
 ## Run rails application, redis, sidekiq, postgres, mailcather containers `docker compose up`
 
-Run containers in the background: `docker compose up -d`
-View live logs stdout from container: `docker compose logs -f --tail 500 app`
+Run containers in the background: `docker compose up -d`. 
+View live logs stdout from container: `docker compose logs -f --tail 500 app`.  
 
-Restart app: `docker compose restart app`
-Attach to the running service: `docker compose exec app bash`
-Run command inside `app` container and exit: `docker compose run app bundle install`
+Restart app: `docker compose restart app`.  
+Attach to the running service: `docker compose exec app bash`. 
+Run command inside `app` container and exit: `docker compose run app bundle install`.  
 
 | Services                                      | Host Network | Docker Network |
 |-----------------------------------------------|--------------|----------------|
