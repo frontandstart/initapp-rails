@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+docker compose build app
+docker compose run app bundle install
+docker compose run app rake db:create db:migrate
+docker compose up

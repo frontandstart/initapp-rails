@@ -1,0 +1,88 @@
+version: "3.8"
+
+services:
+  app:
+    image: initapp-rails
+    container_name: initapp-rails
+    build:
+      context: .
+      target: development
+    env_file: .docker.env
+    tty: true
+    ports:
+      - 3001:3000
+    tmpfs:
+      - /app/tmp/pids
+      - /app/tmp/cache
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./:/app:c
+      - bundle:/usr/local/bundle:d
+      - node_modules:/usr/local/bundle:d
+      - data:/data:d
+    healthcheck:
+      test: ["CMD", "curl", "http://app:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    command: bundle exec puma -C config/puma.rb
+
+  sidekiq:
+    image: initapp-rails
+    container_name: initapp-sidekiq
+    env_file: .docker.env
+    depends_on:
+      redis:
+        condition: service_healthy    
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./:/app:c
+      - bundle:/usr/local/bundle:d
+      - data:/data:d
+    command: bundle exec sidekiq -C config/sidekiq.yml
+
+  redis:
+    image: redis
+    container_name: initapp-redis
+    volumes:
+      - redis:/data:delegated
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+    entrypoint: redis-server --appendonly yes
+    restart: always
+
+  postgres:
+    image: postgres:14.0
+    container_name: initapp-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: 0.0.0.0
+    volumes:
+      - postgres:/var/lib/postgresql/data:c
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h postgres -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # mailcatcher:
+  #   image: dockage/mailcatcher
+  #   container_name: initapp-mailcatcher
+  #   restart: on-failure:10
+  #   ports:
+  #     - 1080:1080
+
+volumes:
+  postgres:
+  redis:
+  bundle:
+  node_modules:
+  data:

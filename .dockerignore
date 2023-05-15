@@ -1,0 +1,9 @@
+node_modules
+.idea
+.vscode
+.DS_Store
+.git
+.gitignore
+.docker-sync
+README.md
+tmp/pids/*

@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+docker compose run app sh -c "bundle check || bundle install"
+docker compose run -e RAILS_ENV=test app bundle exec rails db:create db:test:prepare
+docker compose run -e RAILS_ENV=test app bundle exec rspec
