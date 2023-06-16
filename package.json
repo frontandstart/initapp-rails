@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "rails_admin": "3.1.2"
+  },
+  "scripts": {
+    "build:css": "./bin/build-css.sh",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+  }
+}

@@ -17,6 +17,7 @@ Goals
 
 ## [Development with docker compose](./docker-development.md)
 
+## [Translations](./transpations.md)
 ### links
 - http://localhost:3001 home page
 - http://localhost:3001/admin admin panel (unprotected)

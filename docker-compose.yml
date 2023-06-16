@@ -7,13 +7,14 @@ services:
     build:
       context: .
       target: development
-    env_file: .docker.env
+    env_file:
+      - .env.docker
+      - .env
     tty: true
     ports:
       - 3001:3000
     tmpfs:
       - /app/tmp/pids
-      - /app/tmp/cache
     depends_on:
       - postgres
       - redis
@@ -22,6 +23,7 @@ services:
       - bundle:/usr/local/bundle:d
       - node_modules:/usr/local/bundle:d
       - data:/data:d
+      - cache:/app/tmp/cache
     healthcheck:
       test: ["CMD", "curl", "http://app:3000/health"]
       interval: 10s
@@ -30,10 +32,42 @@ services:
       start_period: 5s
     command: bundle exec puma -C config/puma.rb
 
+  css:
+    image: initapp-rails
+    container_name: initapp-css
+    env_file:
+      - .env.docker
+      - .env
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./:/app:c
+      - bundle:/usr/local/bundle:ro
+      - node_modules:/app/node_modules:ro
+      - cache:/app/tmp/cache
+    command: yarn build:css --watch
+
+  js:
+    image: initapp-rails
+    container_name: initapp-js
+    env_file:
+      - .env.docker
+      - .env
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./:/app:c
+      - bundle:/usr/local/bundle:ro
+      - node_modules:/app/node_modules:ro
+      - cache:/app/tmp/cache
+    command: yarn build --watch
+
   sidekiq:
     image: initapp-rails
     container_name: initapp-sidekiq
-    env_file: .docker.env
+    env_file:
+      - .env.docker
+      - .env
     depends_on:
       redis:
         condition: service_healthy    
@@ -86,3 +120,4 @@ volumes:
   bundle:
   node_modules:
   data:
+  cache:
