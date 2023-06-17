@@ -17,7 +17,6 @@ gem 'rails_admin', '~> 3.0' # Admin
 # assets & frontend part
 gem "cssbundling-rails", "~> 1.1"
 gem "jsbundling-rails", "~> 1.1"
-gem "sassc-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
