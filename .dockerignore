@@ -7,3 +7,4 @@ node_modules
 .docker-sync
 README.md
 tmp/pids/*
+node_modules

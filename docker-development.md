@@ -7,8 +7,8 @@
 ```sh
 docker compose build app
 docker compose run app bundle install
+docker compose run app yarn install
 docker compose run app rake db:create db:migrate
-docker compose up
 ```
 
 ## Run rails application, redis, sidekiq, postgres, mailcather containers `docker compose up`

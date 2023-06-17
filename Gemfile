@@ -70,3 +70,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "factory_bot_rails", "~> 6.2", require: false
+gem "faker", "~> 3.2", require: false

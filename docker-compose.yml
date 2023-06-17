@@ -21,7 +21,7 @@ services:
     volumes:
       - ./:/app:c
       - bundle:/usr/local/bundle:d
-      - node_modules:/usr/local/bundle:d
+      - node_modules:/app/node_modules:d
       - data:/data:d
       - cache:/app/tmp/cache
     healthcheck:
@@ -45,7 +45,7 @@ services:
       - bundle:/usr/local/bundle:ro
       - node_modules:/app/node_modules:ro
       - cache:/app/tmp/cache
-    command: yarn build:css --watch
+    command: yarn build:css
 
   js:
     image: initapp-rails
@@ -60,7 +60,7 @@ services:
       - bundle:/usr/local/bundle:ro
       - node_modules:/app/node_modules:ro
       - cache:/app/tmp/cache
-    command: yarn build --watch
+    command: yarn build
 
   sidekiq:
     image: initapp-rails

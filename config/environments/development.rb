@@ -76,4 +76,8 @@ Rails.application.configure do
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = { address: ENV['MAILCATCHER_HOST'], port: 1025 }
   end
+
+  config.generators do |g|
+    g.factory_bot dir: 'spec/factories'
+  end
 end

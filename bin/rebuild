@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+docker compose build --no-cache app
+docker compose run app bundle install
+docker compose run app yarn install
+docker compose run app rails db:drop db:create db:migrate db:schema:dump db:seed
