@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :admins
+
   root to: 'pages#index'
 
   namespace :admin do
+    resources :admins
     resources :users
 
     root to: 'users#index'

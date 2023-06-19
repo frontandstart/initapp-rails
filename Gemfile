@@ -12,15 +12,13 @@ gem "devise" # Authentication
 gem "cancancan" # Authorization
 gem "stripe" # Payments
 gem 'money-rails', '~>1.12' # Money
-gem 'rails_admin', '~> 3.0' # Admin
 
-# assets & frontend part
+# assets & frontend part without sprockets
 gem "cssbundling-rails", "~> 1.1"
 gem "jsbundling-rails", "~> 1.1"
+
 gem "turbo-rails"
 gem "stimulus-rails"
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
 
 gem "pg", "~> 1.1" # Database for Active Record
 gem "redis", "~> 4.0" # Redis adapter
@@ -72,3 +70,6 @@ end
 
 gem "factory_bot_rails", "~> 6.2", require: false
 gem "faker", "~> 3.2", require: false
+
+gem "rails_admin", "~> 3.1"
+gem "sassc-rails"
