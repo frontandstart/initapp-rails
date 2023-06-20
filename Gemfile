@@ -9,6 +9,7 @@ gem "rails-i18n"
 gem "sidekiq"
 gem "puma", "~> 5.0"
 gem "devise" # Authentication 
+gem "devise-i18n-views"
 gem "cancancan" # Authorization
 gem "stripe" # Payments
 gem 'money-rails', '~>1.12' # Money
@@ -22,6 +23,7 @@ gem "stimulus-rails"
 
 gem "pg", "~> 1.1" # Database for Active Record
 gem "redis", "~> 4.0" # Redis adapter
+gem 'redis-rails'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

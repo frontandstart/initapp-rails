@@ -25,5 +25,12 @@ module Initapp
       logger.formatter = config.log_formatter
       config.logger    = ActiveSupport::TaggedLogging.new(logger)
     end
+
+    config.session_store :redis_store,
+      servers: ["#{ENV['REDIS_URL']}/session"],
+      expire_after: 90.minutes,
+      key: "_#{Rails.application.class.module_parent_name.downcase}_session",
+      threadsafe: true,
+      secure: Rails.env.production? || Rails.env.staging?
   end
 end
