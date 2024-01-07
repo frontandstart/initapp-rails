@@ -20,7 +20,7 @@ services:
     volumes:
       - ./:/app:c
       - bundle:/usr/local/bundle:d
-      - node_modules:/usr/local/bundle:d
+      - node_modules:/app/node_modules:d
       - data:/data:d
     healthcheck:
       test: ["CMD", "curl", "http://app:3000/health"]
@@ -29,6 +29,34 @@ services:
       retries: 3
       start_period: 5s
     command: bundle exec puma -C config/puma.rb
+
+  css:
+    image: initapp-rails
+    container_name: initapp-css
+    env_file:
+      - .docker.env
+      - .env
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./:/app:c
+      - bundle:/usr/local/bundle:ro
+      - node_modules:/app/node_modules:ro
+    command: yarn build:css --watch
+
+  js:
+    image: initapp-rails
+    container_name: initapp-js
+    env_file:
+      - .docker.env
+      - .env
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./:/app:c
+      - bundle:/usr/local/bundle:ro
+      - node_modules:/app/node_modules:ro
+    command: yarn build --watch
 
   sidekiq:
     image: initapp-rails

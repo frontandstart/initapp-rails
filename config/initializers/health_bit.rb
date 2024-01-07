@@ -10,7 +10,7 @@ HealthBit.configure do |c|
   c.show_backtrace = false
 
   c.add('Redis success') do
-    Redis.current.ping == 'PONG'
+    Redis.new(url: ENV['REDIS_URL']).ping == 'PONG'
   end
 
   c.add('Database success') do
