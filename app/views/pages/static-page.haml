@@ -1,0 +1,8 @@
+.container
+  %h5 Static Page
+  %p Create html, erb or haml template inside app/views/pages folder i.e. app/views/pages/static-page.haml
+  %p
+    Access this page by visiting 
+    = link_to "Static page", page_path(path: 'static-page')
+
+  %p= link_to "Home", root_path

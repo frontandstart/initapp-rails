@@ -1,4 +1,5 @@
-.greeting
+
+.container
   %h2 Hello, this is demo Rails app
 
   %ul
@@ -11,3 +12,6 @@
       Bootstrap 5
     %li
       Docker
+    %li
+      Basic static pages
+      = link_to "Static page", page_path(path: 'static-page')

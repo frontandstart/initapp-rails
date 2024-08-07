@@ -6,5 +6,5 @@ Rails.application.routes.draw do
 
   mount HealthBit.rack => '/health'
 
-  get '*path', to: 'pages#index', format: false, via: :get
+  get ':path', to: 'pages#index', as: :page
 end
