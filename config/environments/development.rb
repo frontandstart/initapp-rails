@@ -70,7 +70,8 @@ Rails.application.configure do
 
   config.active_record.dump_schema_after_migration = true
 
-  config.web_console.allowed_ips = Socket.ip_address_list.select(&:ipv4?).map { |addrinfo| IPAddr.new(addrinfo.ip_address).mask(24) }
+  config.web_console.whitelisted_ips = Socket.ip_address_list.select(&:ipv4?).map { |addrinfo| IPAddr.new(addrinfo.ip_address).mask(24) }
+  config.web_console.permissions = '0.0.0.0/0'
 
   if ENV['MAILCATCHER_HOST']
     config.action_mailer.delivery_method = :smtp

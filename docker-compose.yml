@@ -1,9 +1,6 @@
-version: "3.8"
-
 services:
   app:
     image: initapp-rails
-    container_name: initapp-rails
     build:
       context: .
       target: development
@@ -32,7 +29,6 @@ services:
 
   css:
     image: initapp-rails
-    container_name: initapp-css
     env_file:
       - .docker.env
       - .env
@@ -46,7 +42,6 @@ services:
 
   js:
     image: initapp-rails
-    container_name: initapp-js
     env_file:
       - .docker.env
       - .env
@@ -60,7 +55,6 @@ services:
 
   sidekiq:
     image: initapp-rails
-    container_name: initapp-sidekiq
     env_file: .docker.env
     depends_on:
       redis:
@@ -100,7 +94,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
+    
   # mailcatcher:
   #   image: dockage/mailcatcher
   #   container_name: initapp-mailcatcher
