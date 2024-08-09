@@ -4,18 +4,22 @@ services:
     build:
       context: .
       target: development
-    env_file: .docker.env
+    env_file:
+      - .docker.env
+      - .env
     tty: true
     ports:
-      - 3001:3000
+      - ${HOST_PORT:-3001}:3000
     tmpfs:
       - /app/tmp/pids
-      - /app/tmp/cache
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     volumes:
       - ./:/app:c
+      - cache:/app/tmp/cache:d
       - bundle:/usr/local/bundle:d
       - node_modules:/app/node_modules:d
       - data:/data:d
@@ -25,17 +29,16 @@ services:
       timeout: 5s
       retries: 3
       start_period: 5s
-    command: bundle exec puma -C config/puma.rb
+    command: bin/dev-start.sh
 
   css:
     image: initapp-rails
     env_file:
       - .docker.env
       - .env
-    tty: true
-    stdin_open: true
     volumes:
       - ./:/app:c
+      - cache:/app/tmp/cache:d
       - bundle:/usr/local/bundle:ro
       - node_modules:/app/node_modules:ro
     command: yarn build:css --watch
@@ -45,10 +48,9 @@ services:
     env_file:
       - .docker.env
       - .env
-    tty: true
-    stdin_open: true
     volumes:
       - ./:/app:c
+      - cache:/app/tmp/cache:d
       - bundle:/usr/local/bundle:ro
       - node_modules:/app/node_modules:ro
     command: yarn build --watch
@@ -63,13 +65,13 @@ services:
         condition: service_healthy
     volumes:
       - ./:/app:c
+      - cache:/app/tmp/cache:d
       - bundle:/usr/local/bundle:d
       - data:/data:d
     command: bundle exec sidekiq -C config/sidekiq.yml
 
   redis:
-    image: redis
-    container_name: initapp-redis
+    image: redis:7.4.0
     volumes:
       - redis:/data:delegated
     healthcheck:
@@ -81,7 +83,7 @@ services:
     restart: always
 
   postgres:
-    image: postgres:14.0
+    image: postgres:16
     container_name: initapp-postgres
     environment:
       POSTGRES_USER: postgres
@@ -108,3 +110,4 @@ volumes:
   bundle:
   node_modules:
   data:
+  cache:

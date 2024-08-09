@@ -31,14 +31,17 @@ docker compose run app yarn install
 docker compose run app rake db:create db:migrate
 ```
 
-## Run rails application, redis, sidekiq, postgres, mailcather containers `docker compose up`
+## Run rails application, redis, sidekiq, postgres, mailcather containers  
+```
+docker compose up
+```
 
-Run containers in the background: `docker compose up -d`. 
-View live logs stdout from container: `docker compose logs -f --tail 500 app`.  
+Run containers in the background: `docker compose up -d`  
+View live logs stdout from container: `docker compose logs -f --tail 500 app`   
 
-Restart app: `docker compose restart app`.  
-Attach to the running service: `docker compose exec app bash`. 
-Run command inside `app` container and exit: `docker compose run app bundle install`.  
+Restart app: `docker compose restart app`  
+Attach to the running service: `docker compose exec app bash`  
+Run command inside `app` container and exit: `docker compose run app bundle install`  
 
 | Services                                      | Host Network | Docker Network |
 |-----------------------------------------------|--------------|----------------|
@@ -47,6 +50,13 @@ Run command inside `app` container and exit: `docker compose run app bundle inst
 | Redis                                         |              | 6379           |
 | Sidekiq                                       |              |                |
 <!-- | [Mailcatcher](http://localhost:1080)          | 1080         | 1080           | -->
+
+If you want to change host port that you application will be running you may set it
+by setting `HOST_PORT` environment varible at `.env` file:  
+
+```
+HOST_PORT=4001
+```
 
 To up specific service `docker compose up app` or `docker compose up progress`
 
