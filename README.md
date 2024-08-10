@@ -74,6 +74,35 @@ Alias for
       sh -c "bundle exec rake db:create && bundle exec rspec"
 ```
 
+## Debugging inside docker container
+
+We use dafault [debug](https://github.com/ruby/debug) gem  
+Place breakpoint `binding.break` somewhere in a code like in index action of PagesController:
+
+```ruby
+  def index
+    page = params['path'] || 'index'
+
+    binding.break
+
+    if template_exists?("pages/#{page}")
+      render "pages/#{page}" 
+    else
+      redirect_to root_path
+    end
+  end
+```
+
+Then trigger code execution by visiting some page like root page.  
+From another terinal window run:  
+
+```bash
+  docker compose attach app
+```
+
+You will attaching to the process and able to debug application. Use ruby, rails commands see variables at stopped place like `page`
+or use type `c` to going for next breakpoint. See documentation of debug gem.
+
 ### links
 - http://localhost:3001 home page
 - http://localhost:3001/admin admin panel (unprotected)
