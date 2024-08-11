@@ -51,16 +51,18 @@ Run command inside `app` container and exit: `docker compose run app bundle inst
 | Sidekiq                                       |              |                |
 <!-- | [Mailcatcher](http://localhost:1080)          | 1080         | 1080           | -->
 
-If you want to change host port that you application will be running you may set it
-by setting `HOST_PORT` environment varible at `.env` file:  
-
-```
-HOST_PORT=4001
-```
 
 To up specific service `docker compose up app` or `docker compose up progress`
 
 Use `docker compose -h` for more info.
+
+### Change application port 
+If you want to change host port that you application will be running you may set it
+by setting `PORT` environment varible at `.env` file:  
+
+```
+PORT=4001
+```
 
 ## Run tests `bin/docker_rspec`
 

@@ -9,7 +9,7 @@ services:
       - .env
     stdin_open: true
     ports:
-      - ${HOST_PORT:-3001}:3000
+      - ${PORT:-3000}:${PORT:-3000}
     tmpfs:
       - /app/tmp/pids
     depends_on:
