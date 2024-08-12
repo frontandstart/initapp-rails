@@ -1,3 +1,5 @@
+name: Initapp-rails
+
 services:
   app:
     image: initapp-rails

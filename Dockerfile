@@ -27,14 +27,13 @@ RUN apt-get update -y && apt-get install -y \
 
 WORKDIR /app
 
-RUN gem install bundler \
-                foreman
+RUN gem install bundler foreman
 
 ENV BUNDLE_JOBS=$(nproc)
 
 FROM development AS production
 
-RUN bundle config --global jobs $(nproc --all)
+ENV BUNDLE_JOBS=$(nproc)
 
 COPY . .
 
