@@ -120,6 +120,7 @@ GEM
     ffi (1.17.0)
     ffi (1.17.0-aarch64-linux-musl)
     ffi (1.17.0-x86_64-linux-musl)
+    foreman (0.88.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
     haml (6.3.0)
@@ -353,6 +354,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise
+  foreman
   haml-rails
   health_bit
   jbuilder
