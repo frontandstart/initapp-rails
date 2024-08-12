@@ -84,7 +84,6 @@ services:
 
   postgres:
     image: postgres:16
-    container_name: initapp-postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -102,7 +101,7 @@ services:
   #   container_name: initapp-mailcatcher
   #   restart: on-failure:10
   #   ports:
-  #     - 1080:1080
+  #     - ${MAILCATCHER_PORT:-1080}:1080
 
 volumes:
   postgres:
