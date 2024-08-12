@@ -30,9 +30,11 @@ WORKDIR /app
 RUN gem install bundler
 RUN gem install foreman
 
-ENV bundle config --global jobs $(nproc)
+ENV BUNDLE_JOBS=$(nproc)
 
 FROM development AS production
+
+RUN bundle config --global jobs $(nproc --all)
 
 COPY . .
 
