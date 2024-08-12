@@ -27,8 +27,8 @@ RUN apt-get update -y && apt-get install -y \
 
 WORKDIR /app
 
-RUN gem install bundler
-RUN gem install foreman
+RUN gem install bundler \
+                foreman
 
 ENV BUNDLE_JOBS=$(nproc)
 
