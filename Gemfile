@@ -36,7 +36,6 @@ gem "sidekiq"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.0"
-gem "foreman"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
