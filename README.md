@@ -37,7 +37,7 @@ docker compose up
 ```
 
 Run containers in the background: `docker compose up -d`  
-View live logs stdout from container: `docker compose logs -f --tail 500 app`   
+View last 500 lines of live logs stdout from container: `docker compose logs -f --tail 500 app`   
 
 Restart app: `docker compose restart app`  
 Attach to the running service: `docker compose exec app bash`  
@@ -45,7 +45,7 @@ Run command inside `app` container and exit: `docker compose run app bundle inst
 
 | Services                                      | Host Network | Docker Network |
 |-----------------------------------------------|--------------|----------------|
-| [app](http://localhost:3001)                  | 3001         | 3000           |
+| [app](http://localhost:3000)                  | 3000         | 3000           |
 | Postgres                                      |              | 5432           |
 | Redis                                         |              | 6379           |
 | Sidekiq                                       |              |                |
