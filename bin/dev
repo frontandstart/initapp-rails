@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+
+if gem list --no-installed --exact --silent foreman; then
+  echo "Installing foreman..."
+  gem install foreman
+fi
+
+AUTO_MIGRATE=false
+AUTO_DEPS=false
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --auto-migrate) AUTO_MIGRATE=true; shift ;;
+    --auto-deps-install) AUTO_DEPS=true; shift ;;
+    *) break ;;
+  esac
+done
+
+# Only run dependency installation if --auto-deps-install flag is present
+if [ "$AUTO_DEPS" = true ]; then
+  bundle check || bundle install
+  yarn install
+fi
+
+# Only run migrations if --auto-migrate flag is present
+if [ "$AUTO_MIGRATE" = true ]; then
+  bundle exec rails db:prepare
+fi
+
+exec foreman start -f Procfile.dev --env /dev/null "$@"
