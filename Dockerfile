@@ -1,4 +1,5 @@
-FROM ruby:3.2.5-slim-bullseye AS development
+ARG RUBY_VERSION=3.3.6
+FROM ruby:${RUBY_VERSION}-slim-bullseye AS development
 
 COPY --from=node:20.16.0-bullseye-slim /usr/local/bin/node /usr/local/bin/
 COPY --from=node:20.16.0-bullseye-slim /usr/local/lib/node_modules /usr/local/lib/node_modules
@@ -20,14 +21,12 @@ RUN apt-get update -y && apt-get install -y \
       libpq-dev \
       libffi-dev \
       libyaml-dev \
-      python3 \
+      # python3 \
       git \
       libvips \
       bash
 
 WORKDIR /app
-
-RUN gem install bundler foreman
 
 ENV BUNDLE_JOBS=$(nproc)
 
