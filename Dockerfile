@@ -1,4 +1,4 @@
-ARG RUBY_VERSION=3.3.6
+ARG RUBY_VERSION=3.4.2
 FROM ruby:${RUBY_VERSION}-slim-bullseye AS development
 
 COPY --from=node:20.16.0-bullseye-slim /usr/local/bin/node /usr/local/bin/
@@ -21,7 +21,11 @@ RUN apt-get update -y && apt-get install -y \
       libpq-dev \
       libffi-dev \
       libyaml-dev \
-      # python3 \
+      libxml2-dev \
+      libxslt-dev \
+      zlib1g-dev \
+      xz-utils \
+      libvips \
       git \
       libvips \
       bash
