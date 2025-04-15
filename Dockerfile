@@ -1,17 +1,6 @@
 ARG RUBY_VERSION=3.4.2
 FROM ruby:${RUBY_VERSION}-slim-bullseye AS development
 
-COPY --from=node:20.16.0-bullseye-slim /usr/local/bin/node /usr/local/bin/
-COPY --from=node:20.16.0-bullseye-slim /usr/local/lib/node_modules /usr/local/lib/node_modules
-COPY --from=node:20.16.0-bullseye-slim /opt/yarn-v1.22.22 /opt/yarn-v1.22.22
-
-RUN ln -s /usr/local/bin/node /usr/local/bin/nodejs && \
-    ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm && \
-    ln -s /usr/local/lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx && \
-    ln -s /usr/local/lib/node_modules/corepack/dist/corepack.js /usr/local/bin/corepack && \
-    ln -s /opt/yarn-v1.22.22/bin/yarn /usr/local/bin/yarn && \
-    ln -s /opt/yarn-v1.22.22/bin/yarnpkg /usr/local/bin/yarnpkg
-
 RUN apt-get update -y && apt-get install -y \
       curl \
       graphviz \
@@ -32,7 +21,20 @@ RUN apt-get update -y && apt-get install -y \
 
 WORKDIR /app
 
+ARG NODE_VERSION=22.14.0
+ARG YARN_VERSION=1.22.22
+
+RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
+    /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node 
+
+ENV PATH=/usr/local/node/bin:$PATH
+
+RUN npm install -g yarn@${YARN_VERSION} && \
+    rm -rf /tmp/node-build-master
+
 ENV BUNDLE_JOBS=$(nproc)
+
+RUN gem install bundler foreman
 
 FROM development AS production
 
