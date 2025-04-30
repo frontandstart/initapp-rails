@@ -43,5 +43,8 @@ ENV BUNDLE_JOBS=$(nproc)
 COPY . .
 
 RUN bundle config set production true
-RUN bundle install
-RUN bundle exec rails assets:precompile
+RUN bundle install --without development test \
+                   --jobs $(nproc --all) \
+                   --clean \
+                   --deployment
+RUN RAILS_ENV=production SECRET_KEY_BASE=dummy bundle exec rails assets:precompile
