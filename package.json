@@ -7,7 +7,8 @@
     "sass": "^1.69.7"
   },
   "scripts": {
-    "build:css": "./bin/build_css.sh",
+    "build:css": "sass app/assets/stylesheets/application.scss app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "build:css:watch": "sass app/assets/stylesheets/application.scss app/assets/builds/application.css --no-source-map --load-path=node_modules --watch",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
   }
 }
