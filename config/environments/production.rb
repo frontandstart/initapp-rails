@@ -86,4 +86,10 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  # 
+
+  config.public_file_server.headers = {
+    'Cache-Control' => 'public, s-maxage=31536000, maxage=15552000',
+    'Expires' => 1.year.from_now.to_formatted_s(:rfc822)
+  }
 end

@@ -34,5 +34,11 @@ module Initapp
     end
 
     config.hosts << 'app'
+    config.hosts << ENV["APP_DOMAIN"]
+    config.host_authorization = {
+      exclude: ->(request) do
+        request.path == "/health"
+      end
+    }
   end
 end
