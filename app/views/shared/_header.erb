@@ -10,13 +10,13 @@
       </div>
       
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex space-x-8">
-        <%= link_to "Главная", root_path, class: nav_link_class(root_path) %>
-        <a href="#{root_path}#services" class="text-gray-700 hover:text-blue-600 transition-colors">Услуги</a>
-        <%= link_to "Портфолио", portfolio_path, class: nav_link_class(portfolio_path, ['projects']) %>
-        <a href="#{root_path}#tech-stack" class="text-gray-700 hover:text-blue-600 transition-colors">Технологии</a>
-        <a href="#{root_path}#contacts" class="text-gray-700 hover:text-blue-600 transition-colors">Контакты</a>
-        <a href="#{root_path}#contact-form" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors font-medium">
+      <div class="hidden md:flex items-center space-x-2">
+        <%= link_to "Главная", root_path, class: "px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 #{current_page?(root_path) ? 'bg-blue-100 text-blue-800 shadow-inner border-1 border-blue-200' : 'bg-blue-50 text-blue-700 shadow-lg hover:shadow-blue-200 hover:shadow-xl hover:bg-blue-100 border border-blue-100'}" %>
+        <!-- <a href="#{root_path}#services" class="text-gray-700 hover:text-blue-600 transition-colors">Услуги</a> -->
+        <%= link_to "Портфолио", portfolio_path, class: "px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 #{current_page?(portfolio_path) || controller_name == 'projects' ? 'bg-emerald-100 text-emerald-800 shadow-inner border-1 border-emerald-200' : 'bg-emerald-50 text-emerald-700 shadow-lg hover:shadow-emerald-200 hover:shadow-xl hover:bg-emerald-100 border border-emerald-100'}" %>
+        <!-- <a href="#{root_path}#tech-stack" class="text-gray-700 hover:text-blue-600 transition-colors">Технологии</a> -->
+        <a href="<%= root_url %>#contacts" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-amber-50 text-amber-700 shadow-lg hover:shadow-amber-200 hover:shadow-xl hover:bg-amber-100 border border-amber-100">Контакты</a>
+        <a href="<%= root_url %>#contact-form" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-xl transition-all duration-300 font-medium text-sm ml-2 shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40 border border-cyan-400 hover:border-cyan-500">
           Оставить заявку
         </a>
       </div>
@@ -31,13 +31,13 @@
     
     <!-- Mobile menu -->
     <div class="md:hidden hidden bg-white border-t border-gray-200 mt-4" id="mobile-menu">
-      <div class="px-6 py-4 space-y-4">
-        <%= link_to "Главная", root_path, class: mobile_nav_link_class(root_path) %>
-        <a href="#{root_path}#services" class="block text-gray-700 hover:text-blue-600 transition-colors">Услуги</a>
-        <%= link_to "Портфолио", portfolio_path, class: mobile_nav_link_class(portfolio_path, ['projects']) %>
-        <a href="#{root_path}#tech-stack" class="block text-gray-700 hover:text-blue-600 transition-colors">Технологии</a>
-        <a href="#{root_path}#contacts" class="block text-gray-700 hover:text-blue-600 transition-colors">Контакты</a>
-        <a href="#{root_path}#contact-form" class="block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors text-center">
+      <div class="px-6 py-4 space-y-3">
+        <%= link_to "Главная", root_path, class: "block px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 #{current_page?(root_path) ? 'bg-blue-100 text-blue-800 shadow-inner border-2 border-blue-200' : 'bg-blue-50 text-blue-700 shadow-lg hover:shadow-xl hover:bg-blue-100'}" %>
+        <!-- <a href="#{root_path}#services" class="block text-gray-700 hover:text-blue-600 transition-colors">Услуги</a> -->
+        <%= link_to "Портфолио", portfolio_path, class: "block px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 #{current_page?(portfolio_path) || controller_name == 'projects' ? 'bg-emerald-100 text-emerald-800 shadow-inner border-2 border-emerald-200' : 'bg-emerald-50 text-emerald-700 shadow-lg hover:shadow-xl hover:bg-emerald-100'}" %>
+        <!-- <a href="#{root_path}#tech-stack" class="block text-gray-700 hover:text-blue-600 transition-colors">Технологии</a> -->
+        <a href="#{root_path}#contacts" class="block px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-amber-50 text-amber-700 shadow-lg hover:shadow-xl hover:bg-amber-100">Контакты</a>
+        <a href="#{root_path}#contact-form" class="block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-4 py-2 rounded-xl transition-all duration-300 text-center text-sm font-medium shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40 border border-cyan-400 hover:border-cyan-500">
           Оставить заявку
         </a>
       </div>
