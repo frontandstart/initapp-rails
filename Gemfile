@@ -21,9 +21,6 @@ gem "cancancan"
 # Working with money
 # gem 'money-rails', '~>1.12'
 
-# Admin 
-gem "rails_admin"
-
 # Health check for applications
 gem "health_bit"
 

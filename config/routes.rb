@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   mount HealthBit.rack => '/health'
 
   authenticate :admin_user do
-    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
     mount ExceptionTrack::Engine => '/app-errors'
   end
 
