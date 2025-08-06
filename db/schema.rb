@@ -33,17 +33,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_30_131149) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.string "name"
-    t.string "phone"
-    t.string "city"
-    t.string "concrete_grade"
-    t.decimal "volume"
-    t.text "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "settings", force: :cascade do |t|
     t.string "var", null: false
     t.text "value"

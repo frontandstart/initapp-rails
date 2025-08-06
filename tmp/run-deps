@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+echo "Stopping and removing containers"
+docker stop $(docker ps -q)
+docker rm $(docker ps -a -q)
+echo "Running initapp redis & postgres"
+docker run -p 6379:6379 -v ./tmp/deps/redis:/data -d --name initapp_redis redis:7.4.2
+docker run -p 5432:5432 -v ./tmp/deps/postgres:/var/lib/postgresql/data -d --name initapp_postgres -e POSTGRES_HOST_AUTH_METHOD=trust postgres:17-bookworm

@@ -1,5 +1,5 @@
-ARG RUBY_VERSION=3.4.2
-FROM ruby:${RUBY_VERSION}-slim-bullseye AS development
+ARG RUBY_VERSION=3.4.5
+FROM ruby:${RUBY_VERSION}-slim-bookworm AS development
 
 RUN apt-get update -y && apt-get install -y \
       curl \
@@ -14,9 +14,11 @@ RUN apt-get update -y && apt-get install -y \
       libxslt-dev \
       zlib1g-dev \
       xz-utils \
+      imagemagick \
       libvips \
       git \
       libvips \
+      watchman \
       bash
 
 WORKDIR /app
@@ -32,20 +34,29 @@ ENV PATH=/usr/local/node/bin:$PATH
 RUN npm install -g yarn@${YARN_VERSION} && \
     rm -rf /tmp/node-build-master
 
-ENV BUNDLE_JOBS=$(nproc)
-
 RUN gem install bundler foreman
 
-FROM development AS production
+FROM development AS builder
 
-ENV BUNDLE_JOBS=$(nproc)
-
-COPY . .
-
+COPY Gemfile Gemfile.lock ./
 RUN bundle config set production true
 RUN bundle install --without development test \
                    --jobs $(nproc --all) \
                    --clean \
                    --deployment
-RUN yarn install
-RUN RAILS_ENV=production SECRET_KEY_BASE=dummy bundle exec rails assets:precompile
+
+COPY bun.lock package.json ./
+RUN bundle install
+
+FROM builder AS production
+
+COPY . .
+
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /usr/local/bundle /usr/local/bundle
+
+RUN RAILS_ENV=production \
+    SECRET_KEY_BASE=dummy \
+    COMPILE=true \
+    bundle exec rails assets:precompile
+RUN rm -rf node_modules tmp/cache spec

@@ -34,6 +34,10 @@
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+/tmp/miniprofiler/*
+!/tmp/miniprofiler/.keep
+/tmp/deps/*
+!/tmp/deps/.keep
 
 node_modules
 .env

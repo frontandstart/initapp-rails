@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.4.2"
+ruby "3.4.5"
 
 gem "rails", "~> 8.0.0"
 gem "haml-rails"
@@ -30,6 +30,8 @@ gem "health_bit"
 
 # Background jobs
 gem "sidekiq"
+
+gem "shrine"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.0"
@@ -62,6 +64,7 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 gem "cssbundling-rails"
 gem "jsbundling-rails"
+gem "tailwindcss-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
