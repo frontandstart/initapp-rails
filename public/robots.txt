@@ -1,1 +1,21 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+# Robots.txt для Rubyvkube.ru
+User-agent: *
+Allow: /
+
+# Указываем расположение карты сайта
+Sitemap: https://rubyvkube.ru/sitemap.xml
+
+# Запрещаем индексацию административных разделов
+Disallow: /admin/
+Disallow: /rails/
+Disallow: /app-errors/
+
+# Разрешаем индексацию основных разделов
+Allow: /
+Allow: /services
+Allow: /portfolio  
+Allow: /about
+Allow: /contacts
+
+# Время задержки между запросами (в секундах)
+Crawl-delay: 1
