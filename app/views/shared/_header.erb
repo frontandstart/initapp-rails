@@ -1,0 +1,67 @@
+<!-- Navigation Header -->
+<header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+  <nav class="px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <!-- Logo -->
+      <div class="text-2xl font-bold text-gray-900">
+        <%= link_to root_path, class: "hover:text-blue-600 transition-colors" do %>
+          Rubyvkube
+        <% end %>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex space-x-8">
+        <%= link_to "Главная", root_path, class: nav_link_class(root_path) %>
+        <a href="#{root_path}#services" class="text-gray-700 hover:text-blue-600 transition-colors">Услуги</a>
+        <%= link_to "Портфолио", portfolio_path, class: nav_link_class(portfolio_path, ['projects']) %>
+        <a href="#{root_path}#tech-stack" class="text-gray-700 hover:text-blue-600 transition-colors">Технологии</a>
+        <a href="#{root_path}#contacts" class="text-gray-700 hover:text-blue-600 transition-colors">Контакты</a>
+        <a href="#{root_path}#contact-form" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors font-medium">
+          Оставить заявку
+        </a>
+      </div>
+      
+      <!-- Mobile menu button -->
+      <button class="md:hidden text-gray-700" id="mobile-menu-button">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden bg-white border-t border-gray-200 mt-4" id="mobile-menu">
+      <div class="px-6 py-4 space-y-4">
+        <%= link_to "Главная", root_path, class: mobile_nav_link_class(root_path) %>
+        <a href="#{root_path}#services" class="block text-gray-700 hover:text-blue-600 transition-colors">Услуги</a>
+        <%= link_to "Портфолио", portfolio_path, class: mobile_nav_link_class(portfolio_path, ['projects']) %>
+        <a href="#{root_path}#tech-stack" class="block text-gray-700 hover:text-blue-600 transition-colors">Технологии</a>
+        <a href="#{root_path}#contacts" class="block text-gray-700 hover:text-blue-600 transition-colors">Контакты</a>
+        <a href="#{root_path}#contact-form" class="block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors text-center">
+          Оставить заявку
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile menu toggle script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  }
+});
+</script>

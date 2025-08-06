@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_30_131149) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_06_125702) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -33,6 +33,30 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_30_131149) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.integer "position", default: 0
+    t.string "alt_text"
+    t.string "caption"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id", "position"], name: "index_photos_on_project_id_and_position"
+    t.index ["project_id"], name: "index_photos_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "slug", null: false
+    t.text "description"
+    t.boolean "published", default: false
+    t.integer "position", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["position"], name: "index_projects_on_position"
+    t.index ["published"], name: "index_projects_on_published"
+    t.index ["slug"], name: "index_projects_on_slug", unique: true
+  end
+
   create_table "settings", force: :cascade do |t|
     t.string "var", null: false
     t.text "value"
@@ -52,4 +76,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_30_131149) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "photos", "projects"
 end

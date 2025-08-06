@@ -1,0 +1,19 @@
+
+<footer class="bg-gray-900 text-gray-400 py-12">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <div class="text-2xl font-bold text-white mb-4">
+      Rubyvkube
+    </div>
+    <p class="mb-4">Разработка комплексных IT-решений для современного бизнеса</p>
+    <div class="flex justify-center space-x-6 mb-6">
+      <a href="#services" class="hover:text-white transition-colors">Услуги</a>
+      <%= link_to "Портфолио", portfolio_path, class: "hover:text-white transition-colors" %>
+      <a href="#tech-stack" class="hover:text-white transition-colors">Технологии</a>
+      <a href="mailto:contact@rubyvkube.ru" class="hover:text-white transition-colors">contact@rubyvkube.ru</a>
+      <!-- <a href="tel:+7999123456" class="hover:text-white transition-colors">+7 (999) 123-45-67</a> -->
+    </div>
+    <div class="text-sm text-gray-500">
+      © <%= Time.now.year %> Rubyvkube. Все права защищены.
+    </div>
+  </div>
+</footer>

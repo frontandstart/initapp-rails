@@ -1,0 +1,161 @@
+<% content_for :title, @project.title %>
+<% content_for :description, truncate(strip_tags(@project.description), length: 160) if @project.description.present? %>
+
+<!-- Breadcrumbs -->
+<nav class="bg-gray-50 border-b border-gray-200">
+  <div class="container mx-auto px-6 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li>
+        <%= link_to "Главная", root_path, class: "hover:text-blue-600 transition-colors" %>
+      </li>
+      <li class="flex items-center">
+        <svg class="w-4 h-4 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        <%= link_to "Портфолио", portfolio_path, class: "hover:text-blue-600 transition-colors" %>
+      </li>
+      <li class="flex items-center">
+        <svg class="w-4 h-4 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        <span class="text-gray-900 font-medium"><%= @project.title %></span>
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Project Header -->
+<section class="py-16 lg:py-24">
+  <div class="container mx-auto px-6">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        <%= @project.title %>
+      </h1>
+      
+      <% if @project.description.present? %>
+        <div class="prose prose-lg max-w-none text-gray-600 mb-12">
+          <%= simple_format(@project.description) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Project Gallery -->
+<% if @project.photos.any? %>
+  <section class="pb-16 lg:pb-24">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        <!-- Main Image -->
+        <% main_photo = @project.photos.first %>
+        <div class="mb-8">
+          <div class="aspect-[16/10] overflow-hidden rounded-2xl shadow-2xl">
+            <%= image_tag main_photo.large_image('1200x750'), 
+                alt: main_photo.alt_text || @project.title,
+                class: "w-full h-full object-cover cursor-pointer",
+                data: { 
+                  lightbox: "project-gallery",
+                  src: url_for(main_photo.webp_image)
+                } %>
+          </div>
+          <% if main_photo.caption.present? %>
+            <p class="text-center text-gray-600 mt-4 italic"><%= main_photo.caption %></p>
+          <% end %>
+        </div>
+
+        <!-- Thumbnail Gallery -->
+        <% if @project.photos.count > 1 %>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <% @project.photos.drop(1).each do |photo| %>
+              <div class="aspect-square overflow-hidden rounded-xl cursor-pointer hover:scale-105 transition-transform duration-200 shadow-lg hover:shadow-xl">
+                <%= image_tag photo.thumbnail('300x300'), 
+                    alt: photo.alt_text || @project.title,
+                    class: "w-full h-full object-cover",
+                    data: { 
+                      lightbox: "project-gallery",
+                      src: url_for(photo.webp_image),
+                      caption: photo.caption
+                    } %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<!-- Navigation -->
+<section class="py-16 border-t border-gray-200">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="text-center sm:text-left">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Хотите обсудить ваш проект?</h3>
+        <p class="text-gray-600">Свяжитесь с нами для консультации</p>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row gap-4">
+        <%= link_to portfolio_path, class: "inline-flex items-center px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors" do %>
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+          Все проекты
+        <% end %>
+        
+        <%= link_to "#contact", class: "inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" do %>
+          Связаться с нами
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const lightboxImages = document.querySelectorAll('[data-lightbox="project-gallery"]');
+  
+  if (lightboxImages.length > 0) {
+    // Simple lightbox implementation
+    const lightbox = document.createElement('div');
+    lightbox.className = 'fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4';
+    lightbox.innerHTML = `
+      <div class="relative max-w-4xl max-h-full">
+        <img src="" alt="" class="max-w-full max-h-full object-contain">
+        <button class="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 transition-colors">&times;</button>
+        <div class="absolute bottom-4 left-4 right-4 text-center text-white text-sm"></div>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+    
+    const lightboxImg = lightbox.querySelector('img');
+    const lightboxCaption = lightbox.querySelector('div:last-child');
+    const closeBtn = lightbox.querySelector('button');
+    
+    lightboxImages.forEach(img => {
+      img.addEventListener('click', function() {
+        lightboxImg.src = this.dataset.src;
+        lightboxImg.alt = this.alt;
+        lightboxCaption.textContent = this.dataset.caption || '';
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+      });
+    });
+    
+    closeBtn.addEventListener('click', function() {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+    });
+    
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+      }
+    });
+  }
+});
+</script>
