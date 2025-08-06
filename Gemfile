@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.4.5"
 
 gem "rails", "~> 8.0.0"
-gem "haml-rails"
 
 gem "propshaft"
 
@@ -23,7 +22,7 @@ gem "cancancan"
 # gem 'money-rails', '~>1.12'
 
 # Admin 
-# gem "rails_admin"
+gem "rails_admin"
 
 # Health check for applications
 gem "health_bit"
