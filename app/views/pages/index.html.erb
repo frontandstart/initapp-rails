@@ -1,5 +1,5 @@
 <!-- Hero Section -->
-<div class="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 text-white relative overflow-hidden">
+<div class="min-h-180 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 text-white relative overflow-hidden">
   <!-- Background pattern -->
   <div class="absolute inset-0 bg-black opacity-40"></div>
   <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10"></div>
@@ -8,37 +8,20 @@
   <div class="relative z-10 px-6 py-20 text-center">
     <div class="max-w-5xl mx-auto">
       <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-        Разработка комплексных решений<br>
-        <span class="text-blue-400">для современного бизнеса</span>
+        Разработка<br>комплексных решений<br>
+        <!--span class="text-blue-400">для современного бизнеса</span-->
       </h1>
       <p class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
         Веб-приложения, мобильные приложения, бэкенд-системы и DevOps-решения. 
         Выбираем технологии под ваши задачи: от стартапа до энтерпрайза.
       </p>
       
-      <!-- Lead capture form -->
-      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto mb-8">
-        <h3 class="text-2xl font-semibold mb-6">Обсудим ваш проект за 30 минут</h3>
-        <form class="space-y-4">
-          <div class="grid md:grid-cols-2 gap-4">
-            <input type="text" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
-            <input type="tel" placeholder="Телефон" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
-          </div>
-          <input type="email" placeholder="Email" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
-          <select class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">
-            <option value="">Тип проекта</option>
-            <option value="webapp">Веб-приложение</option>
-            <option value="mobile">Мобильное приложение</option>
-            <option value="backend">Бэкенд-система</option>
-            <option value="fullstack">Fullstack решение</option>
-            <option value="devops">DevOps и инфраструктура</option>
-            <option value="other">Другое</option>
-          </select>
-          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
-            Обсудить проект
+      <!-- CTA Button -->
+      <div class="text-center mb-8">
+        <button onclick="openOrderModal()" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+          Обсудить проект за 30 минут
         </button>
-        </form>
-        <p class="text-sm text-gray-400 mt-4">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+        <p class="text-sm text-gray-400 mt-4">Бесплатная консультация и оценка проекта</p>
       </div>
       
       <!-- Quick benefits -->
@@ -112,7 +95,7 @@
           </div>
         </div>
         <div class="text-2xl font-bold text-blue-600 mb-4">от 200 000 ₽</div>
-        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+        <button onclick="openOrderModal()" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
           Обсудить проект
         </button>
       </div>
@@ -147,7 +130,7 @@
           </div>
         </div>
         <div class="text-2xl font-bold text-green-600 mb-4">от 300 000 ₽</div>
-        <button class="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+        <button onclick="openOrderModal()" class="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
           Разработать приложение
         </button>
       </div>
@@ -182,7 +165,7 @@
           </div>
         </div>
         <div class="text-2xl font-bold text-purple-600 mb-4">от 150 000 ₽</div>
-        <button class="w-full bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+        <button onclick="openOrderModal()" class="w-full bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
           Создать API
         </button>
       </div>
@@ -217,7 +200,7 @@
           </div>
         </div>
         <div class="text-2xl font-bold text-orange-600 mb-4">от 100 000 ₽</div>
-        <button class="w-full bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+        <button onclick="openOrderModal()" class="w-full bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
           Настроить инфраструктуру
         </button>
       </div>
@@ -252,7 +235,7 @@
           </div>
         </div>
         <div class="text-2xl font-bold text-indigo-600 mb-4">от 500 000 ₽</div>
-        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+        <button onclick="openOrderModal()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
           Запустить проект
         </button>
       </div>
@@ -287,7 +270,7 @@
           </div>
         </div>
         <div class="text-2xl font-bold text-red-600 mb-4">от 50 000 ₽</div>
-        <button class="w-full bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+        <button onclick="openOrderModal()" class="w-full bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
           Обсудить задачу
         </button>
       </div>
@@ -297,7 +280,7 @@
     <div class="text-center mt-16">
       <h3 class="text-2xl font-bold text-gray-900 mb-4">Не нашли подходящую услугу?</h3>
       <p class="text-gray-600 mb-8">Расскажите о вашем проекте, и мы предложим индивидуальное решение</p>
-      <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+      <button onclick="openOrderModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
         Получить консультацию
       </button>
     </div>
@@ -578,12 +561,12 @@
       которое поможет вашему бизнесу расти и развиваться.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+      <button onclick="openOrderModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
         Обсудить проект
       </button>
-      <a href="#tech-stack" class="border-2 border-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105">
+      <!--a href="#tech-stack" class="border-2 border-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105">
         Посмотреть технологии
-      </a>
+      </a-->
     </div>
   </div>
 </section>

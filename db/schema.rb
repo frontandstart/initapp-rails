@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_06_125702) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_06_141850) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -33,6 +33,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_125702) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.string "project_type"
+    t.text "message"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "photos", force: :cascade do |t|
     t.bigint "project_id", null: false
     t.integer "position", default: 0
@@ -52,6 +63,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_125702) do
     t.integer "position", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
     t.index ["position"], name: "index_projects_on_position"
     t.index ["published"], name: "index_projects_on_published"
     t.index ["slug"], name: "index_projects_on_slug", unique: true

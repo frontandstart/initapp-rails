@@ -1,0 +1,17 @@
+🔔 НОВАЯ ЗАЯВКА С САЙТА RUBYVKUBE
+
+👤 Имя: <%= @order.name %>
+📧 Email: <%= @order.email %>
+📱 Телефон: <%= @order.formatted_phone %>
+🎯 Тип проекта: <%= @order.project_type_name %>
+
+<% if @order.message.present? -%>
+💬 Сообщение:
+<%= @order.message %>
+
+<% end -%>
+📅 Дата заявки: <%= @order.created_at.strftime('%d.%m.%Y в %H:%M') %>
+
+--
+Это автоматическое уведомление с сайта Rubyvkube.ru
+Для ответа клиенту используйте email: <%= @order.email %>

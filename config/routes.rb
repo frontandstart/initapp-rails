@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   root to: 'pages#index'
 
+  # Заявки
+  resources :orders, only: [:create]
+
   # Портфолио
   get 'portfolio', to: 'projects#index', as: :portfolio
   get 'portfolio/:id', to: 'projects#show', as: :project
+
+  # Контакты
+  get 'contacts', to: 'pages#contacts', as: :contacts
 
   mount HealthBit.rack => '/health'
 

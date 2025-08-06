@@ -16,4 +16,11 @@ class Setting < RailsSettings::Base
   field :og_image, type: :string, default: "/icon.png"
   field :og_type, type: :string, default: "website"
   field :og_url, type: :string, default: "https://rubyvkube.ru"
+  
+  # Контактная информация
+  field :contact_email, type: :string, default: "contact@rubyvkube.ru"
+  field :contact_phone, type: :string, default: "+7 (999) 123-45-67"
+  field :contact_address, type: :string, default: "Россия, Санкт-Петербург"
+  field :telegram_username, type: :string, default: "@r3agency"
+  field :working_hours, type: :string, default: "Пн-Пт: 10:00-19:00 (МСК)"
 end

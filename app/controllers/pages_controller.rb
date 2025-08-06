@@ -94,4 +94,18 @@ class PagesController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def contacts
+    @meta_tags = {
+      title: "Контакты - Rubyvkube",
+      description: "Свяжитесь с нами для обсуждения вашего проекта. Разработка веб-приложений, мобильных приложений и IT-решений.",
+      keywords: "контакты, связаться, заказать разработку, веб-студия контакты, Rubyvkube контакты"
+    }
+
+    @order = Order.new
+    
+    # Получаем настройки из Setting модели
+    @company_name = Setting.site_name || "Rubyvkube"
+    @company_description = Setting.description || "Разработка комплексных IT-решений"
+  end
 end

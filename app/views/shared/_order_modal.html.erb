@@ -1,0 +1,226 @@
+<!-- Popup Modal для заявки -->
+<div id="orderModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl max-w-md w-full p-8 relative">
+    <button onclick="closeOrderModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    
+    <h3 class="text-2xl font-semibold mb-6">Обсудим ваш проект</h3>
+    
+    <form id="modal-order-form" class="space-y-4" data-turbo="false">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      
+      <div class="grid grid-cols-2 gap-4">
+        <input type="text" name="order[name]" placeholder="Ваше имя" required
+               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+        <input type="tel" name="order[phone]" placeholder="Телефон" required
+               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+      </div>
+      
+      <input type="email" name="order[email]" placeholder="Email" required
+             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+      
+      <select name="order[project_type]" required
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+        <option value="">Тип проекта</option>
+        <option value="webapp">Веб-приложение</option>
+        <option value="mobile">Мобильное приложение</option>
+        <option value="backend">Бэкенд-система</option>
+        <option value="fullstack">Fullstack решение</option>
+        <option value="devops">DevOps и инфраструктура</option>
+        <option value="other">Другое</option>
+      </select>
+      
+      <textarea name="order[message]" placeholder="Кратко о проекте..." rows="3"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"></textarea>
+      
+      <input type="submit" value="Обсудить проект"
+             class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+    </form>
+    
+    <p class="text-xs text-gray-500 mt-4 text-center">
+      Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
+    </p>
+  </div>
+</div>
+
+<script>
+// Функции для работы с модальным окном
+function openOrderModal() {
+  // Сбрасываем форму перед открытием
+  resetOrderForm();
+  
+  document.getElementById('orderModal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeOrderModal() {
+  document.getElementById('orderModal').classList.add('hidden');
+  document.body.style.overflow = 'auto';
+}
+
+function resetOrderForm() {
+  const form = document.getElementById('modal-order-form');
+  if (form) {
+    form.reset();
+    
+    // Сбрасываем select к первому значению (placeholder)
+    const selectField = form.querySelector('select[name="order[project_type]"]');
+    if (selectField) {
+      selectField.selectedIndex = 0;
+    }
+    
+    // Убираем все возможные классы ошибок с полей
+    const formFields = form.querySelectorAll('input, select, textarea');
+    formFields.forEach(field => {
+      field.classList.remove('border-red-500', 'border-red-300');
+      field.classList.add('border-gray-300');
+    });
+    
+    // Сбрасываем кнопку отправки
+    const submitButton = form.querySelector('input[type="submit"]');
+    if (submitButton) {
+      submitButton.value = 'Обсудить проект';
+      submitButton.disabled = false;
+    }
+  }
+}
+
+// Простая инициализация обработчиков
+function initFormHandlers() {
+  console.log('Initializing form handlers');
+  const modalForm = document.getElementById('modal-order-form');
+  if (modalForm) {
+    console.log('Modal form found, setting up handler');
+    modalForm.onsubmit = handleModalFormSubmit;
+  }
+  
+  // Закрытие модального окна при клике вне его
+  const modal = document.getElementById('orderModal');
+  if (modal) {
+    modal.onclick = function(e) {
+      if (e.target === this) {
+        closeOrderModal();
+      }
+    };
+  }
+}
+
+// Инициализация при загрузке DOM
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initFormHandlers);
+} else {
+  initFormHandlers();
+}
+
+// Также инициализируем при Turbo событиях
+document.addEventListener('turbo:load', initFormHandlers);
+
+function handleModalFormSubmit(event) {
+  event.preventDefault();
+  console.log('Form submit event triggered');
+  
+  const form = event.target;
+  const formData = new FormData(form);
+  const submitButton = form.querySelector('input[type="submit"]');
+  const originalText = submitButton.value;
+  
+  // Проверяем наличие CSRF токена
+  const csrfToken = document.querySelector('meta[name="csrf-token"]');
+  if (!csrfToken) {
+    console.error('CSRF token not found!');
+    showNotification('Ошибка безопасности. Обновите страницу.', 'error');
+    return;
+  }
+  
+  console.log('CSRF token found:', csrfToken.getAttribute('content'));
+  console.log('Form data:', Object.fromEntries(formData));
+  
+  // Показываем состояние загрузки
+  submitButton.value = 'Отправляем...';
+  submitButton.disabled = true;
+  
+  fetch('/orders', {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'X-CSRF-Token': csrfToken.getAttribute('content'),
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    console.log('Response status:', response.status);
+    console.log('Response headers:', Object.fromEntries(response.headers));
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Server response:', data);
+    if (data.status === 'success') {
+      // Показываем уведомление об успехе
+      showNotification(data.message, 'success');
+      
+      // Полностью сбрасываем форму
+      resetOrderForm();
+      
+      // Закрываем модальное окно с небольшой задержкой для лучшего UX
+      setTimeout(() => {
+        closeOrderModal();
+      }, 1000);
+    } else {
+      showNotification(data.message || 'Произошла ошибка при отправке заявки', 'error');
+      if (data.errors && data.errors.length > 0) {
+        console.error('Validation errors:', data.errors);
+      }
+    }
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+    showNotification('Произошла ошибка при отправке заявки. Попробуйте еще раз.', 'error');
+  })
+  .finally(() => {
+    submitButton.value = originalText;
+    submitButton.disabled = false;
+  });
+}
+
+// Уведомления
+function showNotification(message, type) {
+  // Удаляем существующие уведомления
+  const existingNotifications = document.querySelectorAll('.notification');
+  existingNotifications.forEach(n => n.remove());
+  
+  // Создаем элемент уведомления
+  const notification = document.createElement('div');
+  notification.className = `notification fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm ${
+    type === 'success' 
+      ? 'bg-green-500 text-white' 
+      : 'bg-red-500 text-white'
+  }`;
+  notification.innerHTML = `
+    <div class="flex items-center">
+      <div class="flex-1">${message}</div>
+      <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-white hover:text-gray-200">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Автоматически удаляем через 5 секунд
+  setTimeout(() => {
+    if (notification.parentElement) {
+      notification.remove();
+    }
+  }, 5000);
+}
+</script>
+</script>

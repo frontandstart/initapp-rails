@@ -1,0 +1,318 @@
+<% content_for :title, @meta_tags[:title] %>
+<% content_for :description, @meta_tags[:description] %>
+<% content_for :keywords, @meta_tags[:keywords] %>
+
+<div class="min-h-screen bg-gray-50 py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Контакты</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Готовы обсудить ваш проект? Свяжитесь с нами удобным способом или оставьте заявку
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <!-- Контактная информация -->
+      <div class="space-y-8">
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-6">Как с нами связаться</h2>
+          
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Email</h3>
+                <a href="mailto:<%= Setting.contact_email %>" class="text-blue-600 hover:text-blue-700 transition-colors">
+                  <%= Setting.contact_email %>
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Телефон</h3>
+                <a href="tel:<%= Setting.contact_phone.gsub(/[^\d+]/, '') %>" class="text-green-600 hover:text-green-700 transition-colors">
+                  <%= Setting.contact_phone %>
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Telegram</h3>
+                <a href="https://t.me/<%= Setting.telegram_username.gsub('@', '') %>" target="_blank" class="text-blue-600 hover:text-blue-700 transition-colors">
+                  <%= Setting.telegram_username %>
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Местоположение</h3>
+                <p class="text-gray-600"><%= Setting.contact_address %></p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Время работы</h3>
+                <p class="text-gray-600"><%= Setting.working_hours %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-8 text-white">
+          <h3 class="text-2xl font-semibold mb-4">Готовы начать проект?</h3>
+          <p class="text-blue-100 mb-6">
+            Мы поможем воплотить ваши идеи в жизнь. Обсудим проект, составим техническое задание и предложим оптимальное решение.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <button onclick="openOrderModal()" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+              Оставить заявку
+            </button>
+            <a href="mailto:<%= Setting.contact_email %>" class="border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+              Написать на email
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Форма обратной связи -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-6">Оставьте заявку</h2>
+        <p class="text-gray-600 mb-8">
+          Расскажите о своем проекте, и мы свяжемся с вами в течение 24 часов
+        </p>
+
+        <%= form_with model: @order, url: orders_path, local: false, id: 'contact-form', class: 'space-y-6' do |form| %>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <%= form.text_field :name, placeholder: 'Ваше имя', required: true, 
+                  class: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors' %>
+            </div>
+            <div>
+              <%= form.telephone_field :phone, placeholder: 'Телефон', required: true,
+                  class: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors' %>
+            </div>
+          </div>
+
+          <div>
+            <%= form.email_field :email, placeholder: 'Email', required: true,
+                class: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors' %>
+          </div>
+
+          <div>
+            <%= form.select :project_type, 
+                options_for_select([
+                  ['Выберите тип проекта', ''],
+                  ['Веб-приложение', 'webapp'],
+                  ['Мобильное приложение', 'mobile'],
+                  ['Бэкенд-система', 'backend'],
+                  ['Fullstack решение', 'fullstack'],
+                  ['DevOps и инфраструктура', 'devops'],
+                  ['Другое', 'other']
+                ]), {}, {
+                  required: true,
+                  class: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors'
+                } %>
+          </div>
+
+          <div>
+            <%= form.text_area :message, placeholder: 'Расскажите подробнее о вашем проекте...', rows: 4,
+                class: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none' %>
+          </div>
+
+          <div>
+            <%= form.submit 'Отправить заявку', 
+                class: 'w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105' %>
+          </div>
+        <% end %>
+
+        <p class="text-sm text-gray-500 mt-4 text-center">
+          Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Modal для заявки -->
+<div id="orderModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl max-w-md w-full p-8 relative">
+    <button onclick="closeOrderModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    
+    <h3 class="text-2xl font-semibold mb-6">Обсудим ваш проект</h3>
+    
+    <%= form_with model: Order.new, url: orders_path, local: false, id: 'modal-order-form', class: 'space-y-4' do |form| %>
+      <div class="grid grid-cols-2 gap-4">
+        <%= form.text_field :name, placeholder: 'Ваше имя', required: true, 
+            class: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent' %>
+        <%= form.telephone_field :phone, placeholder: 'Телефон', required: true,
+            class: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent' %>
+      </div>
+      
+      <%= form.email_field :email, placeholder: 'Email', required: true,
+          class: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent' %>
+      
+      <%= form.select :project_type, 
+          options_for_select([
+            ['Тип проекта', ''],
+            ['Веб-приложение', 'webapp'],
+            ['Мобильное приложение', 'mobile'],
+            ['Бэкенд-система', 'backend'],
+            ['Fullstack решение', 'fullstack'],
+            ['DevOps и инфраструктура', 'devops'],
+            ['Другое', 'other']
+          ]), {}, {
+            required: true,
+            class: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+          } %>
+      
+      <%= form.text_area :message, placeholder: 'Кратко о проекте...', rows: 3,
+          class: 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none' %>
+      
+      <%= form.submit 'Обсудить проект', 
+          class: 'w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300' %>
+    <% end %>
+    
+    <p class="text-xs text-gray-500 mt-4 text-center">
+      Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
+    </p>
+  </div>
+</div>
+
+<script>
+// Обработка отправки форм
+document.addEventListener('DOMContentLoaded', function() {
+  // Основная форма на странице
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', handleFormSubmit);
+  }
+  
+  // Форма в модальном окне
+  const modalForm = document.getElementById('modal-order-form');
+  if (modalForm) {
+    modalForm.addEventListener('submit', handleFormSubmit);
+  }
+});
+
+function handleFormSubmit(event) {
+  event.preventDefault();
+  
+  const form = event.target;
+  const formData = new FormData(form);
+  const submitButton = form.querySelector('input[type="submit"]');
+  const originalText = submitButton.value;
+  
+  // Показываем состояние загрузки
+  submitButton.value = 'Отправляем...';
+  submitButton.disabled = true;
+  
+  fetch('/orders', {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'success') {
+      showNotification(data.message, 'success');
+      form.reset();
+      if (form.id === 'modal-order-form') {
+        closeOrderModal();
+      }
+    } else {
+      showNotification(data.message, 'error');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    showNotification('Произошла ошибка при отправке заявки. Попробуйте еще раз.', 'error');
+  })
+  .finally(() => {
+    submitButton.value = originalText;
+    submitButton.disabled = false;
+  });
+}
+
+function openOrderModal() {
+  document.getElementById('orderModal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeOrderModal() {
+  document.getElementById('orderModal').classList.add('hidden');
+  document.body.style.overflow = 'auto';
+}
+
+// Закрытие модального окна при клике вне его
+document.getElementById('orderModal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeOrderModal();
+  }
+});
+
+// Уведомления
+function showNotification(message, type) {
+  // Создаем элемент уведомления
+  const notification = document.createElement('div');
+  notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm ${
+    type === 'success' 
+      ? 'bg-green-500 text-white' 
+      : 'bg-red-500 text-white'
+  }`;
+  notification.innerHTML = `
+    <div class="flex items-center">
+      <div class="flex-1">${message}</div>
+      <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-white hover:text-gray-200">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Автоматически удаляем через 5 секунд
+  setTimeout(() => {
+    if (notification.parentElement) {
+      notification.remove();
+    }
+  }, 5000);
+}
+</script>

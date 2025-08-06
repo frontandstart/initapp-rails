@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z0-9\-]+\z/ }
+  validates :url, format: { with: URI::regexp(%w[http https]), message: 'должен быть валидным URL' }, allow_blank: true
   
   scope :published, -> { where(published: true) }
   scope :ordered, -> { order(:position, :created_at) }

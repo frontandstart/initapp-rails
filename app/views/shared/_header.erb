@@ -3,11 +3,83 @@
   <nav class="px-6 py-4">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
       <!-- Logo -->
-      <div class="text-2xl font-bold text-gray-900">
-        <%= link_to root_path, class: "hover:text-blue-600 transition-colors" do %>
-          Rubyvkube
+      <div class="flex items-center">
+        <%= link_to root_path, class: "flex items-center hover:opacity-80 transition-opacity" do %>
+          <!-- Animated Gradient Cube Logo Variant 4 -->
+          <div class="relative w-11 h-11 mr-3">
+            <div class="gradient-cube">
+              <div class="gradient-face gradient-front">
+                <span class="text-white font-bold text-lg">R</span>
+              </div>
+              <div class="gradient-face gradient-top"></div>
+              <div class="gradient-face gradient-right"></div>
+            </div>
+          </div>
+          <span class="text-2xl font-bold text-gray-900">Rubyvkube</span>
         <% end %>
       </div>
+
+      <style>
+        @keyframes cubeRotate {
+          0% { transform: rotateX(-15deg) rotateY(15deg); }
+          25% { transform: rotateX(-15deg) rotateY(105deg); }
+          50% { transform: rotateX(-15deg) rotateY(195deg); }
+          75% { transform: rotateX(-15deg) rotateY(285deg); }
+          100% { transform: rotateX(-15deg) rotateY(375deg); }
+        }
+        
+        @keyframes gradientShift {
+          0%, 100% { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          }
+          33% { 
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+          }
+          66% { 
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+          }
+        }
+        
+        .gradient-cube {
+          position: relative;
+          width: 44px;
+          height: 44px;
+          transform-style: preserve-3d;
+          animation: cubeRotate 8s infinite linear;
+        }
+        
+        .gradient-face {
+          position: absolute;
+          width: 44px;
+          height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 4px;
+          box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-front {
+          transform: translateZ(22px);
+          animation: gradientShift 6s infinite;
+        }
+        
+        .gradient-top {
+          transform: rotateX(90deg) translateZ(22px);
+          background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+        }
+        
+        .gradient-right {
+          transform: rotateY(90deg) translateZ(22px);
+          background: linear-gradient(135deg, rgba(102, 126, 234, 0.6) 0%, rgba(118, 75, 162, 0.6) 100%);
+        }
+        
+        .gradient-cube:hover {
+          animation-play-state: paused;
+          transform: rotateX(-15deg) rotateY(15deg) scale(1.1);
+          transition: transform 0.3s ease;
+        }
+      </style>
       
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center space-x-2">
@@ -15,10 +87,10 @@
         <!-- <a href="#{root_path}#services" class="text-gray-700 hover:text-blue-600 transition-colors">Услуги</a> -->
         <%= link_to "Портфолио", portfolio_path, class: "px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 #{current_page?(portfolio_path) || controller_name == 'projects' ? 'bg-emerald-100 text-emerald-800 shadow-inner border-1 border-emerald-200' : 'bg-emerald-50 text-emerald-700 shadow-lg hover:shadow-emerald-200 hover:shadow-xl hover:bg-emerald-100 border border-emerald-100'}" %>
         <!-- <a href="#{root_path}#tech-stack" class="text-gray-700 hover:text-blue-600 transition-colors">Технологии</a> -->
-        <a href="<%= root_url %>#contacts" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-amber-50 text-amber-700 shadow-lg hover:shadow-amber-200 hover:shadow-xl hover:bg-amber-100 border border-amber-100">Контакты</a>
-        <a href="<%= root_url %>#contact-form" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-xl transition-all duration-300 font-medium text-sm ml-2 shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40 border border-cyan-400 hover:border-cyan-500">
+        <%= link_to "Контакты", contacts_path, class: "px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-amber-50 text-amber-700 shadow-lg hover:shadow-amber-200 hover:shadow-xl hover:bg-amber-100 border border-amber-100" %>
+        <button onclick="openOrderModal()" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-xl transition-all duration-300 font-medium text-sm ml-2 shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40 border border-cyan-400 hover:border-cyan-500">
           Оставить заявку
-        </a>
+        </button>
       </div>
       
       <!-- Mobile menu button -->
@@ -36,10 +108,10 @@
         <!-- <a href="#{root_path}#services" class="block text-gray-700 hover:text-blue-600 transition-colors">Услуги</a> -->
         <%= link_to "Портфолио", portfolio_path, class: "block px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 #{current_page?(portfolio_path) || controller_name == 'projects' ? 'bg-emerald-100 text-emerald-800 shadow-inner border-2 border-emerald-200' : 'bg-emerald-50 text-emerald-700 shadow-lg hover:shadow-xl hover:bg-emerald-100'}" %>
         <!-- <a href="#{root_path}#tech-stack" class="block text-gray-700 hover:text-blue-600 transition-colors">Технологии</a> -->
-        <a href="#{root_path}#contacts" class="block px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-amber-50 text-amber-700 shadow-lg hover:shadow-xl hover:bg-amber-100">Контакты</a>
-        <a href="#{root_path}#contact-form" class="block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-4 py-2 rounded-xl transition-all duration-300 text-center text-sm font-medium shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40 border border-cyan-400 hover:border-cyan-500">
+        <%= link_to "Контакты", contacts_path, class: "block px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-amber-50 text-amber-700 shadow-lg hover:shadow-xl hover:bg-amber-100" %>
+        <button onclick="openOrderModal()" class="block w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-4 py-2 rounded-xl transition-all duration-300 text-center text-sm font-medium shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40 border border-cyan-400 hover:border-cyan-500">
           Оставить заявку
-        </a>
+        </button>
       </div>
     </div>
   </nav>

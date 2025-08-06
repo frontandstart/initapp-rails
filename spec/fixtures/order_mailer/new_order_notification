@@ -1,0 +1,3 @@
+OrderMailer#new_order_notification
+
+Hi, find me in app/views/order_mailer/new_order_notification

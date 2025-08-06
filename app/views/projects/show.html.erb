@@ -32,6 +32,20 @@
         <%= @project.title %>
       </h1>
       
+      <% if @project.url.present? %>
+        <div class="mb-6">
+          <%= link_to @project.url, 
+              target: '_blank', 
+              rel: 'noopener noreferrer',
+              class: 'inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium' do %>
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+            Посмотреть проект
+          <% end %>
+        </div>
+      <% end %>
+      
       <% if @project.description.present? %>
         <div class="prose prose-lg max-w-none text-gray-600 mb-12">
           <%= simple_format(@project.description) %>
@@ -102,12 +116,12 @@
           Все проекты
         <% end %>
         
-        <%= link_to "#contact", class: "inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" do %>
+        <button onclick="openOrderModal()" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
           Связаться с нами
           <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
-        <% end %>
+        </button>
       </div>
     </div>
   </div>
