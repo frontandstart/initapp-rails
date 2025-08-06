@@ -1,7 +1,7 @@
-name: initapp
+name: rubyvkube
 
 x-app: &app
-  image: initapp
+  image: rubyvkube
   build:
     context: .
     target: development
@@ -61,7 +61,7 @@ services:
     restart: always
 
   postgres:
-    image: postgres:16.8-bookworm
+    image: postgres:17-bookworm
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres

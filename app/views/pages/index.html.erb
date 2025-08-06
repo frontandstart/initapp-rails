@@ -1,19 +1,21 @@
 <!-- Hero Section -->
-<div class="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white relative overflow-hidden hero-bg">
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 text-white relative overflow-hidden">
   <!-- Background pattern -->
-  <div class="absolute inset-0 bg-black opacity-50"></div>
-  <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+  <div class="absolute inset-0 bg-black opacity-40"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10"></div>
   
   <!-- Navigation -->
   <nav class="relative z-10 px-6 py-4">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-        InitApp Rails
+      <div class="text-2xl font-bold text-white">
+        RubyVKube
       </div>
       <div class="hidden md:flex space-x-8">
-        <a href="#features" class="hover:text-blue-300 transition-colors">Features</a>
-        <a href="#tech-stack" class="hover:text-blue-300 transition-colors">Tech Stack</a>
-        <%= link_to "Sign In", new_user_session_path, class: "bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors" if defined?(new_user_session_path) rescue "" %>
+        <a href="#services" class="hover:text-blue-300 transition-colors">Услуги</a>
+        <a href="#portfolio" class="hover:text-blue-300 transition-colors">Портфолио</a>
+        <a href="#process" class="hover:text-blue-300 transition-colors">Как работаем</a>
+        <a href="#contacts" class="hover:text-blue-300 transition-colors">Контакты</a>
+        <a href="#contact-form" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg transition-colors font-medium">Оставить заявку</a>
       </div>
       
       <!-- Mobile menu button -->
@@ -25,30 +27,72 @@
     </div>
     
     <!-- Mobile menu -->
-    <div class="md:hidden hidden bg-blue-900/95 backdrop-blur-sm" id="mobile-menu">
+    <div class="md:hidden hidden bg-slate-900/95 backdrop-blur-sm" id="mobile-menu">
       <div class="px-6 py-4 space-y-4">
-        <a href="#features" class="block hover:text-blue-300 transition-colors">Features</a>
-        <a href="#tech-stack" class="block hover:text-blue-300 transition-colors">Tech Stack</a>
-        <%= link_to "Sign In", new_user_session_path, class: "block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors text-center" if defined?(new_user_session_path) rescue "" %>
+        <a href="#services" class="block hover:text-blue-300 transition-colors">Услуги</a>
+        <a href="#portfolio" class="block hover:text-blue-300 transition-colors">Портфолио</a>
+        <a href="#process" class="block hover:text-blue-300 transition-colors">Как работаем</a>
+        <a href="#contacts" class="block hover:text-blue-300 transition-colors">Контакты</a>
+        <a href="#contact-form" class="block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors text-center">Оставить заявку</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero Content -->
   <div class="relative z-10 px-6 py-20 text-center">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text">
-        Rails Starter Pack
+    <div class="max-w-5xl mx-auto">
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+        Создание сайтов под ключ<br>
+        <span class="text-blue-400">с гарантией результата</span>
       </h1>
-      <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-        Production-ready Rails application with modern tools and best practices built in. 
-        Get started in minutes, not hours.
+      <p class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
+        Разработка современных лендингов, интернет-магазинов и корпоративных сайтов для малого и среднего бизнеса. 
+        Быстро, качественно, с техподдержкой и SEO-продвижением.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <button class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
-          Get Started
-        </button>
-        <%= link_to "View Demo", page_path(path: 'static-page'), class: "border-2 border-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105" %>
+      
+      <!-- Lead capture form -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto mb-8">
+        <h3 class="text-2xl font-semibold mb-6">Получите расчет стоимости за 15 минут</h3>
+        <form class="space-y-4">
+          <div class="grid md:grid-cols-2 gap-4">
+            <input type="text" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <input type="tel" placeholder="Телефон" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          </div>
+          <input type="email" placeholder="Email" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <select class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <option value="">Тип сайта</option>
+            <option value="landing">Лендинг</option>
+            <option value="shop">Интернет-магазин</option>
+            <option value="corporate">Корпоративный сайт</option>
+            <option value="other">Другое</option>
+          </select>
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+            Рассчитать стоимость
+          </button>
+        </form>
+        <p class="text-sm text-gray-400 mt-4">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+      </div>
+      
+      <!-- Quick benefits -->
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto text-sm">
+        <div class="flex items-center justify-center space-x-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Сроки от 7 дней</span>
+        </div>
+        <div class="flex items-center justify-center space-x-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Гарантия 12 месяцев</span>
+        </div>
+        <div class="flex items-center justify-center space-x-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Бесплатная техподдержка</span>
+        </div>
       </div>
     </div>
   </div>
@@ -61,140 +105,467 @@
   </div>
 </div>
 
-<!-- Features Section -->
-<section id="features" class="py-20 bg-gray-50">
+<!-- Services Section -->
+<section id="services" class="py-20 bg-gray-50">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold text-gray-900 mb-4">Everything You Need</h2>
-      <p class="text-xl text-gray-600">Built-in features to accelerate your development</p>
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Наши услуги</h2>
+      <p class="text-xl text-gray-600">Полный цикл разработки сайтов для вашего бизнеса</p>
     </div>
     
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Authentication -->
-      <div class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-          <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-3">Authentication</h3>
-        <p class="text-gray-600 mb-4">Complete user authentication system with Devise. Sign up, sign in, password reset, and email confirmation out of the box.</p>
-        <div class="text-sm text-blue-600 font-medium">✓ User & Admin authentication</div>
-      </div>
-
-      <!-- Modern Styling -->
-      <div class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-          <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-3">Tailwind CSS</h3>
-        <p class="text-gray-600 mb-4">Modern utility-first CSS framework for rapid UI development. Build beautiful, responsive designs with ease.</p>
-        <div class="text-sm text-purple-600 font-medium">✓ Responsive design system</div>
-      </div>
-
-      <!-- Docker -->
-      <div class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
-          <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-3">Docker Ready</h3>
-        <p class="text-gray-600 mb-4">Complete Docker Compose setup for development and production. Get your environment running with a single command.</p>
-        <div class="text-sm text-green-600 font-medium">✓ Development & Production configs</div>
-      </div>
-
-      <!-- Background Jobs -->
-      <div class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
-          <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <!-- Landing Pages -->
+      <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 group">
+        <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-200 transition-colors">
+          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
           </svg>
         </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-3">Background Jobs</h3>
-        <p class="text-gray-600 mb-4">Sidekiq integration for handling background jobs, email sending, and asynchronous processing.</p>
-        <div class="text-sm text-orange-600 font-medium">✓ Redis & Sidekiq configured</div>
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Лендинги</h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">Продающие одностраничные сайты для привлечения клиентов. Высокая конверсия, быстрая загрузка, адаптивный дизайн.</p>
+        <div class="space-y-2 mb-6">
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Современный дизайн
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            SEO-оптимизация
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Формы обратной связи
+          </div>
+        </div>
+        <div class="text-2xl font-bold text-blue-600 mb-4">от 25 000 ₽</div>
+        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+          Заказать лендинг
+        </button>
       </div>
 
-      <!-- Static Pages -->
-      <div class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
-          <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+      <!-- E-commerce -->
+      <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-green-200 group">
+        <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-200 transition-colors">
+          <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.293 2.293A1 1 0 005 16h16M7 13v6a2 2 0 002 2h6a2 2 0 002-2v-6"></path>
           </svg>
         </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-3">Static Pages</h3>
-        <p class="text-gray-600 mb-4">Flexible static page system for content like About, Privacy Policy, Terms of Service, and more.</p>
-        <div class="text-sm text-indigo-600 font-medium">✓ Dynamic routing system</div>
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Интернет-магазины</h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">Полнофункциональные магазины с системой оплаты, каталогом товаров, корзиной и административной панелью.</p>
+        <div class="space-y-2 mb-6">
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Каталог товаров
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Система оплаты
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Админ-панель
+          </div>
+        </div>
+        <div class="text-2xl font-bold text-green-600 mb-4">от 80 000 ₽</div>
+        <button class="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+          Сделать интернет-магазин
+        </button>
       </div>
 
-      <!-- Error Tracking -->
-      <div class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-6">
-          <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+      <!-- Corporate Sites -->
+      <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-purple-200 group">
+        <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-200 transition-colors">
+          <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
           </svg>
         </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-3">Error Tracking</h3>
-        <p class="text-gray-600 mb-4">Built-in error tracking and monitoring to help you catch and fix issues before they impact users.</p>
-        <div class="text-sm text-red-600 font-medium">✓ Exception tracking included</div>
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Корпоративные сайты</h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">Представительские сайты компаний с разделами услуг, новостей, портфолио и контактной информацией.</p>
+        <div class="space-y-2 mb-6">
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Многостраничная структура
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            CMS для управления
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Блог и новости
+          </div>
+        </div>
+        <div class="text-2xl font-bold text-purple-600 mb-4">от 50 000 ₽</div>
+        <button class="w-full bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+          Заказать сайт
+        </button>
       </div>
+
+      <!-- Technical Support -->
+      <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-orange-200 group">
+        <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-200 transition-colors">
+          <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Техподдержка</h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">Обслуживание и поддержка сайтов: обновления, резервное копирование, мониторинг, исправление ошибок.</p>
+        <div class="space-y-2 mb-6">
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Регулярные обновления
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Резервное копирование
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Мониторинг 24/7
+          </div>
+        </div>
+        <div class="text-2xl font-bold text-orange-600 mb-4">от 5 000 ₽/мес</div>
+        <button class="w-full bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+          Подключить поддержку
+        </button>
+      </div>
+
+      <!-- SEO Services -->
+      <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-indigo-200 group">
+        <div class="w-16 h-16 bg-indigo-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-200 transition-colors">
+          <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">SEO-продвижение</h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">Комплексное продвижение сайта в поисковых системах для увеличения органического трафика и продаж.</p>
+        <div class="space-y-2 mb-6">
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Анализ конкурентов
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Техническая оптимизация
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Контент-маркетинг
+          </div>
+        </div>
+        <div class="text-2xl font-bold text-indigo-600 mb-4">от 15 000 ₽/мес</div>
+        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+          Заказать SEO
+        </button>
+      </div>
+
+      <!-- Custom Development -->
+      <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-red-200 group">
+        <div class="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-200 transition-colors">
+          <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Разработка сложных проектов</h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">Индивидуальная разработка веб-приложений, CRM, порталов и других нестандартных решений для бизнеса.</p>
+        <div class="space-y-2 mb-6">
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Индивидуальный подход
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Современные технологии
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Полный цикл разработки
+          </div>
+        </div>
+        <div class="text-2xl font-bold text-red-600 mb-4">от 150 000 ₽</div>
+        <button class="w-full bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+          Обсудить проект
+        </button>
+      </div>
+    </div>
+    
+    <!-- CTA for services -->
+    <div class="text-center mt-16">
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">Не нашли подходящую услугу?</h3>
+      <p class="text-gray-600 mb-8">Расскажите о вашем проекте, и мы предложим индивидуальное решение</p>
+      <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+        Получить консультацию
+      </button>
     </div>
   </div>
 </section>
 
-<!-- Tech Stack Section -->
-<section id="tech-stack" class="py-20 bg-white">
+<!-- Portfolio Section -->
+<section id="portfolio" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold text-gray-900 mb-4">Modern Tech Stack</h2>
-      <p class="text-xl text-gray-600">Built with the latest and greatest technologies</p>
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Портфолио веб-студии</h2>
+      <p class="text-xl text-gray-600">Примеры наших работ и успешных проектов</p>
     </div>
     
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-      <div class="text-center group">
-        <div class="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-          <span class="text-2xl font-bold text-red-600">R</span>
-        </div>
-        <h3 class="font-semibold text-gray-900">Rails 8</h3>
+    <!-- Portfolio filter -->
+    <div class="flex justify-center mb-12">
+      <div class="bg-gray-100 p-1 rounded-lg">
+        <button class="portfolio-filter-btn active px-6 py-2 rounded-md font-medium transition-colors" data-filter="all">
+          Все проекты
+        </button>
+        <button class="portfolio-filter-btn px-6 py-2 rounded-md font-medium transition-colors" data-filter="landing">
+          Лендинги
+        </button>
+        <button class="portfolio-filter-btn px-6 py-2 rounded-md font-medium transition-colors" data-filter="shop">
+          Магазины
+        </button>
+        <button class="portfolio-filter-btn px-6 py-2 rounded-md font-medium transition-colors" data-filter="corporate">
+          Корпоративные
+        </button>
       </div>
-      
-      <div class="text-center group">
-        <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-          <span class="text-2xl font-bold text-blue-600">T</span>
+    </div>
+    
+    <!-- Portfolio grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Project 1 - Landing -->
+      <div class="portfolio-item group" data-category="landing">
+        <div class="bg-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+          <div class="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+            <!-- Placeholder for project image -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-white text-center">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <h4 class="text-lg font-semibold">TechStart Landing</h4>
+              </div>
+            </div>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity flex items-center justify-center">
+              <button class="text-white bg-blue-600 px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                Подробнее
+              </button>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Лендинг для IT-стартапа</h3>
+            <p class="text-gray-600 mb-4">Продающая страница для SaaS-продукта с высокой конверсией 12.5%</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">Лендинг</span>
+              <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Конверсия +250%</span>
+            </div>
+            <div class="text-sm text-gray-500">
+              <strong>Результат:</strong> Увеличение заявок на 250%, снижение стоимости лида на 40%
+            </div>
+          </div>
         </div>
-        <h3 class="font-semibold text-gray-900">Tailwind</h3>
       </div>
-      
-      <div class="text-center group">
-        <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-          <span class="text-2xl font-bold text-blue-600">🐳</span>
+
+      <!-- Project 2 - E-commerce -->
+      <div class="portfolio-item group" data-category="shop">
+        <div class="bg-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+          <div class="aspect-video bg-gradient-to-br from-green-500 to-teal-600 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-white text-center">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.293 2.293A1 1 0 005 16h16M7 13v6a2 2 0 002 2h6a2 2 0 002-2v-6"></path>
+                </svg>
+                <h4 class="text-lg font-semibold">EcoShop Store</h4>
+              </div>
+            </div>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity flex items-center justify-center">
+              <button class="text-white bg-green-600 px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                Подробнее
+              </button>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Интернет-магазин экотоваров</h3>
+            <p class="text-gray-600 mb-4">Полнофункциональный магазин с каталогом 500+ товаров</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">E-commerce</span>
+              <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">500+ товаров</span>
+            </div>
+            <div class="text-sm text-gray-500">
+              <strong>Результат:</strong> Запуск за 3 недели, средний чек 3500₽
+            </div>
+          </div>
         </div>
-        <h3 class="font-semibold text-gray-900">Docker</h3>
       </div>
-      
-      <div class="text-center group">
-        <div class="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-          <span class="text-2xl font-bold text-green-600">P</span>
+
+      <!-- Project 3 - Corporate -->
+      <div class="portfolio-item group" data-category="corporate">
+        <div class="bg-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+          <div class="aspect-video bg-gradient-to-br from-purple-500 to-indigo-600 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-white text-center">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+                <h4 class="text-lg font-semibold">LawFirm Pro</h4>
+              </div>
+            </div>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity flex items-center justify-center">
+              <button class="text-white bg-purple-600 px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                Подробнее
+              </button>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Сайт юридической фирмы</h3>
+            <p class="text-gray-600 mb-4">Корпоративный сайт с каталогом услуг и системой записи</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">Корпоративный</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">Онлайн-запись</span>
+            </div>
+            <div class="text-sm text-gray-500">
+              <strong>Результат:</strong> +180% органического трафика за 6 месяцев
+            </div>
+          </div>
         </div>
-        <h3 class="font-semibold text-gray-900">PostgreSQL</h3>
       </div>
-      
-      <div class="text-center group">
-        <div class="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-          <span class="text-2xl font-bold text-red-600">R</span>
+
+      <!-- Project 4 - Landing -->
+      <div class="portfolio-item group" data-category="landing">
+        <div class="bg-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+          <div class="aspect-video bg-gradient-to-br from-orange-500 to-red-600 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-white text-center">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <h4 class="text-lg font-semibold">FitnessPro</h4>
+              </div>
+            </div>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity flex items-center justify-center">
+              <button class="text-white bg-orange-600 px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                Подробнее
+              </button>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Лендинг фитнес-клуба</h3>
+            <p class="text-gray-600 mb-4">Продающая страница с онлайн-записью на тренировки</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Лендинг</span>
+              <span class="px-3 py-1 bg-red-100 text-red-800 text-sm rounded-full">Фитнес</span>
+            </div>
+            <div class="text-sm text-gray-500">
+              <strong>Результат:</strong> 300+ новых клиентов за первый месяц
+            </div>
+          </div>
         </div>
-        <h3 class="font-semibold text-gray-900">Redis</h3>
       </div>
-      
-      <div class="text-center group">
-        <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-          <span class="text-2xl font-bold text-purple-600">S</span>
+
+      <!-- Project 5 - Corporate -->
+      <div class="portfolio-item group" data-category="corporate">
+        <div class="bg-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+          <div class="aspect-video bg-gradient-to-br from-teal-500 to-cyan-600 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-white text-center">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+                <h4 class="text-lg font-semibold">MedCenter</h4>
+              </div>
+            </div>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity flex items-center justify-center">
+              <button class="text-white bg-teal-600 px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                Подробнее
+              </button>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Сайт медицинского центра</h3>
+            <p class="text-gray-600 mb-4">Многостраничный сайт с записью к врачам и каталогом услуг</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-teal-100 text-teal-800 text-sm rounded-full">Медицина</span>
+              <span class="px-3 py-1 bg-cyan-100 text-cyan-800 text-sm rounded-full">Запись онлайн</span>
+            </div>
+            <div class="text-sm text-gray-500">
+              <strong>Результат:</strong> Автоматизация записи, +60% онлайн-заявок
+            </div>
+          </div>
         </div>
-        <h3 class="font-semibold text-gray-900">Sidekiq</h3>
       </div>
+
+      <!-- Project 6 - Shop -->
+      <div class="portfolio-item group" data-category="shop">
+        <div class="bg-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+          <div class="aspect-video bg-gradient-to-br from-pink-500 to-rose-600 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-white text-center">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.293 2.293A1 1 0 005 16h16M7 13v6a2 2 0 002 2h6a2 2 0 002-2v-6"></path>
+                </svg>
+                <h4 class="text-lg font-semibold">BeautyShop</h4>
+              </div>
+            </div>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity flex items-center justify-center">
+              <button class="text-white bg-pink-600 px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                Подробнее
+              </button>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Магазин косметики</h3>
+            <p class="text-gray-600 mb-4">Интернет-магазин с системой лояльности и отзывами</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-pink-100 text-pink-800 text-sm rounded-full">Косметика</span>
+              <span class="px-3 py-1 bg-rose-100 text-rose-800 text-sm rounded-full">Лояльность</span>
+            </div>
+            <div class="text-sm text-gray-500">
+              <strong>Результат:</strong> ROI 320% за первые 3 месяца работы
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio CTA -->
+    <div class="text-center mt-16">
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">Хотите увидеть больше наших работ?</h3>
+      <p class="text-gray-600 mb-8">Посмотрите полное портфолио с детальными кейсами и результатами</p>
+      <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+        Смотреть все проекты
+      </button>
     </div>
   </div>
 </section>
