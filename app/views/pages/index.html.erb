@@ -1,21 +1,233 @@
-<div class="container">
-  <h2>Hello, this is demo Rails starter app</h2>
+<!-- Hero Section -->
+<div class="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white relative overflow-hidden hero-bg">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 bg-black opacity-50"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+  
+  <!-- Navigation -->
+  <nav class="relative z-10 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+        InitApp Rails
+      </div>
+      <div class="hidden md:flex space-x-8">
+        <a href="#features" class="hover:text-blue-300 transition-colors">Features</a>
+        <a href="#tech-stack" class="hover:text-blue-300 transition-colors">Tech Stack</a>
+        <%= link_to "Sign In", new_user_session_path, class: "bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors" if defined?(new_user_session_path) rescue "" %>
+      </div>
+      
+      <!-- Mobile menu button -->
+      <button class="md:hidden text-white" id="mobile-menu-button">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden bg-blue-900/95 backdrop-blur-sm" id="mobile-menu">
+      <div class="px-6 py-4 space-y-4">
+        <a href="#features" class="block hover:text-blue-300 transition-colors">Features</a>
+        <a href="#tech-stack" class="block hover:text-blue-300 transition-colors">Tech Stack</a>
+        <%= link_to "Sign In", new_user_session_path, class: "block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors text-center" if defined?(new_user_session_path) rescue "" %>
+      </div>
+    </div>
+  </nav>
 
-  <ul>
-      Devise
-    </li>
-    <li>
-      Tailwind CSS
-    </li>
-    <li>
-      Docker compose setup
-    </li>
-    <li>
-      Sidekiq
-    </li>
-    <li>
-      Basic static pages
-      <%= link_to "Static page", page_path(path: 'static-page') %>
-    </li>
-  </ul>
+  <!-- Hero Content -->
+  <div class="relative z-10 px-6 py-20 text-center">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text">
+        Rails Starter Pack
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+        Production-ready Rails application with modern tools and best practices built in. 
+        Get started in minutes, not hours.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+          Get Started
+        </button>
+        <%= link_to "View Demo", page_path(path: 'static-page'), class: "border-2 border-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105" %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
 </div>
+
+<!-- Features Section -->
+<section id="features" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Everything You Need</h2>
+      <p class="text-xl text-gray-600">Built-in features to accelerate your development</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Authentication -->
+      <div class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Authentication</h3>
+        <p class="text-gray-600 mb-4">Complete user authentication system with Devise. Sign up, sign in, password reset, and email confirmation out of the box.</p>
+        <div class="text-sm text-blue-600 font-medium">✓ User & Admin authentication</div>
+      </div>
+
+      <!-- Modern Styling -->
+      <div class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Tailwind CSS</h3>
+        <p class="text-gray-600 mb-4">Modern utility-first CSS framework for rapid UI development. Build beautiful, responsive designs with ease.</p>
+        <div class="text-sm text-purple-600 font-medium">✓ Responsive design system</div>
+      </div>
+
+      <!-- Docker -->
+      <div class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Docker Ready</h3>
+        <p class="text-gray-600 mb-4">Complete Docker Compose setup for development and production. Get your environment running with a single command.</p>
+        <div class="text-sm text-green-600 font-medium">✓ Development & Production configs</div>
+      </div>
+
+      <!-- Background Jobs -->
+      <div class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Background Jobs</h3>
+        <p class="text-gray-600 mb-4">Sidekiq integration for handling background jobs, email sending, and asynchronous processing.</p>
+        <div class="text-sm text-orange-600 font-medium">✓ Redis & Sidekiq configured</div>
+      </div>
+
+      <!-- Static Pages -->
+      <div class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Static Pages</h3>
+        <p class="text-gray-600 mb-4">Flexible static page system for content like About, Privacy Policy, Terms of Service, and more.</p>
+        <div class="text-sm text-indigo-600 font-medium">✓ Dynamic routing system</div>
+      </div>
+
+      <!-- Error Tracking -->
+      <div class="feature-card bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Error Tracking</h3>
+        <p class="text-gray-600 mb-4">Built-in error tracking and monitoring to help you catch and fix issues before they impact users.</p>
+        <div class="text-sm text-red-600 font-medium">✓ Exception tracking included</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Stack Section -->
+<section id="tech-stack" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Modern Tech Stack</h2>
+      <p class="text-xl text-gray-600">Built with the latest and greatest technologies</p>
+    </div>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+      <div class="text-center group">
+        <div class="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+          <span class="text-2xl font-bold text-red-600">R</span>
+        </div>
+        <h3 class="font-semibold text-gray-900">Rails 8</h3>
+      </div>
+      
+      <div class="text-center group">
+        <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+          <span class="text-2xl font-bold text-blue-600">T</span>
+        </div>
+        <h3 class="font-semibold text-gray-900">Tailwind</h3>
+      </div>
+      
+      <div class="text-center group">
+        <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+          <span class="text-2xl font-bold text-blue-600">🐳</span>
+        </div>
+        <h3 class="font-semibold text-gray-900">Docker</h3>
+      </div>
+      
+      <div class="text-center group">
+        <div class="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+          <span class="text-2xl font-bold text-green-600">P</span>
+        </div>
+        <h3 class="font-semibold text-gray-900">PostgreSQL</h3>
+      </div>
+      
+      <div class="text-center group">
+        <div class="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+          <span class="text-2xl font-bold text-red-600">R</span>
+        </div>
+        <h3 class="font-semibold text-gray-900">Redis</h3>
+      </div>
+      
+      <div class="text-center group">
+        <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+          <span class="text-2xl font-bold text-purple-600">S</span>
+        </div>
+        <h3 class="font-semibold text-gray-900">Sidekiq</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+  <div class="max-w-4xl mx-auto text-center px-6">
+    <h2 class="text-4xl font-bold mb-6">Ready to Build Something Amazing?</h2>
+    <p class="text-xl mb-8 text-blue-100">
+      Skip the setup and start building your next great idea with our production-ready Rails starter pack.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+        Start Building Now
+      </button>
+      <a href="https://github.com" class="border-2 border-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105">
+        View on GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-12">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+      InitApp Rails
+    </div>
+    <p class="mb-4">A modern Rails starter pack for rapid application development</p>
+    <div class="flex justify-center space-x-6">
+      <a href="#" class="hover:text-white transition-colors">Documentation</a>
+      <a href="#" class="hover:text-white transition-colors">GitHub</a>
+      <a href="#" class="hover:text-white transition-colors">Support</a>
+    </div>
+  </div>
+</footer>
